@@ -1,19 +1,14 @@
 FROM docker:stable
 MAINTAINER Cosmin Petrescu <cosmin.petrescu@innobyte.com>
 
-RUN apt-get update -y && \
-    apt-get upgrade -y && \
-    apt-get -y autoremove && \
-    apt-get clean
+RUN apk update && \
+    apk upgrade
 
-RUN \
-    apt-get update \
-    && apt-get install -y --no-install-recommends \
+RUN apk add --update \
     python \
     python-dev \
-    python-pip \
-    python-yaml \
-    && apt-get clean
+    py-pip \
+    build-base
 
 RUN pip install awscli
 
